@@ -1,0 +1,30 @@
+.card{
+    width:250px;
+    height: 400px;
+    padding: 20px;
+    background-color: rgba(198, 45, 45, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: whitesmoke;
+    border:whitesmoke 10px solid;
+    border-radius: 20px;
+    font-size: 1rem;
+    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.801);
+}
+.card img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    aspect-ratio: 3/2;
+}
+.numT{
+    font-size: 2rem;
+    font-weight: bold;
+    display: absolute;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
