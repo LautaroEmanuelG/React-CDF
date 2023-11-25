@@ -12,7 +12,6 @@ function App() {
       const data = await response.json()
 
       setcharacters(data.docs)
-      console.log(response)
     }
 
     fetchData()
