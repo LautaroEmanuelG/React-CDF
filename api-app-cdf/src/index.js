@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import { BrowserRouter, Route , Routes } from 'react-router-dom';
+import { BrowserRouter, Route , Routes,Navigate } from 'react-router-dom';
 import Layout from './views/Layout';
 import Character from './views/Character';
 
@@ -13,9 +13,9 @@ root.render(
       <Routes>
         <Route path="/" element={<Layout />} >
           <Route index element={<App />} />
-          <Route path="character/:idCharacter" element={<Character />} />
+          <Route path="character/:nombreCharacter" element={<Character />} />
         </Route>
-        <Route path='*' element={<App />} />
+        <Route path='*' element={<Navigate replace to="/"/>} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

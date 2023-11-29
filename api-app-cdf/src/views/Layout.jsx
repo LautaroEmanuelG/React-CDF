@@ -10,7 +10,7 @@ const Layout = () => {
             <input type="text"/>
             <input type="button" value="🔍"/>
         </div>
-        <Link to="/Personaje-al-azar" value="Personaje al azar"/>
+        <Link to="/Personaje-al-azar" value="Personaje al azar">Personaje al azar</Link>
     </header>
     <main>
         <Outlet />
