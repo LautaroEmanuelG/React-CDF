@@ -8,7 +8,6 @@ const Character = () => {
 
   useEffect(() => {
     const buscarCharacter = async () => {
-
       const response = await fetch(
         `https://apisimpsons.fly.dev/api/personajes/find/${nombreCharacter}`
       );
@@ -26,14 +25,28 @@ const Character = () => {
       {currentCharacter && (
         <>
           <div className="contenedor">
-            <img className="img" src={currentCharacter.Imagen} alt={currentCharacter.Nombre} />
-            <h1 className="nombre">{currentCharacter.Nombre}</h1>
-            <p className="ocupacion">{currentCharacter.Ocupacion}</p>
+            <img
+              className="img"
+              src={currentCharacter.Imagen}
+              alt={currentCharacter.Nombre}
+            />
+            <div className="titulos">
+              <h1 className="nombre">{currentCharacter.Nombre}</h1>
+              <p className="ocupacion">{currentCharacter.Ocupacion}</p>
+            </div>
           </div>
           <div className="contenedor-lore">
-          <p className="historia">Historia: {currentCharacter.Historia}</p>
-          <p className="genero">Género: {currentCharacter.Genero}</p>
-          <p className="estado">Actualmente se encuentra: {currentCharacter.Estado}</p>
+            <p className="historia">
+              <strong>Historia:</strong> {currentCharacter.Historia}
+            </p>
+            <span className="datos">
+              <p className="genero">
+                <strong>{currentCharacter.Genero}</strong>
+              </p>
+              <p className="estado">
+                <strong>{currentCharacter.Estado}</strong>
+              </p>
+            </span>
           </div>
         </>
       )}
