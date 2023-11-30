@@ -18,9 +18,11 @@ function App() {
     fetchData()
 
   }, [count])
+
   const handlerSuma = () => {
     setCount(count + 1)
   }
+  
   const handlerResta = () => {
     count === 0 ? setCount(count) : setCount(count - 1)
   }

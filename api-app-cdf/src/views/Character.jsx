@@ -1,45 +1,65 @@
-import { Link, useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import { CardCharacter } from "../cardCharacter/CardCharacter";
+import { useParams } from "react-router-dom";
 
 const Character = () => {
-  const [characters, setCharacters] = useState([]);
+  //const [characters, setCharacters] = useState([]);
   const [currentCharacter, setCurrentCharacter] = useState({});
   const { nombreCharacter } = useParams();
-  console.log(nombreCharacter);
 
-  const buscarCharacter = () => {
-    const character = characters.find(
-      (character) => character.Nombre === nombreCharacter
-    );
-    return setCurrentCharacter(character);
-  };
+  // useEffect(() => {
+  //   const getCharacters = async () => {
+  //     const response = await fetch(
+  //       `https://apisimpsons.fly.dev/api/personajes/find/${nombreCharacter}`
+  //     );
+  //     const data = await response.json();
+
+  //     console.log("Data reult:", data.result);
+  //     setCharacters(data.result);
+  //   };
+  //   getCharacters();
+  // }, [nombreCharacter]);
+
+  // useEffect(() => {
+  //   const buscarCharacter = () => {
+  //     console.log("Characters buscando:", characters);
+  //     const found = characters.find(
+  //       (character) => character.Nombre === nombreCharacter
+  //     );
+  //     setCurrentCharacter(found);
+  //   };
+  //   buscarCharacter();
+  // }, [characters]);
 
   useEffect(() => {
-    const getCharacter = async () => {
+    const buscarCharacter = async () => {
+      console.log("Characters buscando:", nombreCharacter,"AAA");
+      
       const response = await fetch(
         `https://apisimpsons.fly.dev/api/personajes/find/${nombreCharacter}`
       );
       const data = await response.json();
-      setCharacters(data.result);
-      buscarCharacter();
+      console.log("Comparaacion: ",data.result, "=", nombreCharacter)
+      const found = await data.result.find(
+        (character) => character.Nombre.trim() === nombreCharacter.trim()
+      );
+      console.log("Found:", found);
+      setCurrentCharacter(found);
     };
-    getCharacter();
+    buscarCharacter();
   }, [nombreCharacter]);
 
   return (
-    <div className="App">
-      <h1 className="title">Relacionados con {`${nombreCharacter}`}</h1>
-      <section className="btn-count"></section>
-      <ul className="cardList">
-        {characters.map((character) => {
-          return (
-            <Link to={`/character/${character.Nombre}`} key={character._id}>
-              <CardCharacter key={character._id} character={character} />
-            </Link>
-          );
-        })}
-      </ul>
+    <div className="Presentacion">
+      {currentCharacter && (
+        <>
+          <h1>{currentCharacter.Nombre}</h1>
+          <img src={currentCharacter.Imagen} alt={currentCharacter.Nombre} />
+          <p>{currentCharacter.Ocupacion}</p>
+          <p>Un poco de su historia: {currentCharacter.Historia}</p>
+          <p>Género: {currentCharacter.Genero}</p>
+          <p>Actualmente se encuentra: {currentCharacter.Estado}</p>
+        </>
+      )}
     </div>
   );
 };
