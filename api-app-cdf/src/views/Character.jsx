@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import "./character.css";
 
 const Character = () => {
   const [currentCharacter, setCurrentCharacter] = useState({});
@@ -21,15 +22,17 @@ const Character = () => {
   }, [nombreCharacter]);
 
   return (
-    <div className="Presentacion">
+    <div className="presentacion">
       {currentCharacter && (
         <>
-          <h1>{currentCharacter.Nombre}</h1>
-          <img src={currentCharacter.Imagen} alt={currentCharacter.Nombre} />
-          <p>{currentCharacter.Ocupacion}</p>
-          <p>Un poco de su historia: {currentCharacter.Historia}</p>
-          <p>Género: {currentCharacter.Genero}</p>
-          <p>Actualmente se encuentra: {currentCharacter.Estado}</p>
+          <div className="contenedor">
+            <img className="img" src={currentCharacter.Imagen} alt={currentCharacter.Nombre} />
+            <h1 className="nombre">{currentCharacter.Nombre}</h1>
+            <p className="ocupacion">{currentCharacter.Ocupacion}</p>
+          </div>
+          <p className="historia">Historia: {currentCharacter.Historia}</p>
+          <p className="genero">Género: {currentCharacter.Genero}</p>
+          <p className="estado">Actualmente se encuentra: {currentCharacter.Estado}</p>
         </>
       )}
     </div>

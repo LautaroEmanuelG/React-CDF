@@ -9,14 +9,12 @@
   justify-content: center;
   align-items: center;
   font-size: 2rem;
-  background-color: rgb(202, 202, 11);
+  background-color: rgb(249, 233, 2);
   min-width:100vh;
 }
 .title{
   font-size: 5rem;
   font-weight: bold;
-  font-family: 'Simpsonfont DEMO';
-  src:url(./fonts/Simpsonfont\ DEMO.otf);
 }
 .cardList{
   display: flex;

@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.presentacion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    height: 100%;
+    background-size: cover;
+    background-color: rgb(254, 215, 25);
+}
+.contenedor{
+    width: 100%;
+    background-size: cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8)), url(../img/Springfield11.png);
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    min-height: 400px;
+    border-bottom: 4px solid rgb(249, 233, 2);
+}
+.img{
+    position:absolute;
+}
+.nombre {
+    font-size: 4rem;
+    color: #fff;
+    text-shadow: 2px 2px 4px #000000;
+}
+.ocupacion{
+    font-size: 2rem;
+    color: rgb(249, 233, 2);
+    text-shadow: 2px 2px 4px #000000;
+}
