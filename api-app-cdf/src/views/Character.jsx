@@ -30,9 +30,11 @@ const Character = () => {
             <h1 className="nombre">{currentCharacter.Nombre}</h1>
             <p className="ocupacion">{currentCharacter.Ocupacion}</p>
           </div>
+          <div className="contenedor-lore">
           <p className="historia">Historia: {currentCharacter.Historia}</p>
           <p className="genero">Género: {currentCharacter.Genero}</p>
           <p className="estado">Actualmente se encuentra: {currentCharacter.Estado}</p>
+          </div>
         </>
       )}
     </div>
