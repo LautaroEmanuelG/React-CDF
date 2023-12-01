@@ -11,12 +11,9 @@ function App() {
     const fetchData = async () => {
       const response = await fetch(`https://apisimpsons.fly.dev/api/personajes?limit=10&page=${count}`)
       const data = await response.json()
-
       setcharacters(data.docs)
     }
-
     fetchData()
-
   }, [count])
 
   const handlerSuma = () => {

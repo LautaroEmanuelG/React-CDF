@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import "./character.css";
+import { Presentacion } from "../cardCharacter/Presentacion";
 
 const Character = () => {
   const [currentCharacter, setCurrentCharacter] = useState({});
@@ -21,36 +21,7 @@ const Character = () => {
   }, [nombreCharacter]);
 
   return (
-    <div className="presentacion">
-      {currentCharacter && (
-        <>
-          <div className="contenedor">
-            <img
-              className="img"
-              src={currentCharacter.Imagen}
-              alt={currentCharacter.Nombre}
-            />
-            <div className="titulos">
-              <h1 className="nombre">{currentCharacter.Nombre}</h1>
-              <p className="ocupacion">{currentCharacter.Ocupacion}</p>
-            </div>
-          </div>
-          <div className="contenedor-lore">
-            <p className="historia">
-              <strong>Historia:</strong> {currentCharacter.Historia}
-            </p>
-            <span className="datos">
-              <p className="genero">
-                <strong>{currentCharacter.Genero}</strong>
-              </p>
-              <p className="estado">
-                <strong>{currentCharacter.Estado}</strong>
-              </p>
-            </span>
-          </div>
-        </>
-      )}
-    </div>
+    <Presentacion key={currentCharacter._id} currentCharacter={currentCharacter} />
   );
 };
 

@@ -1,41 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Presentacion } from "../cardCharacter/Presentacion";
+import "./personaje-al-azar.css"
 
 const Personaje = () => {
-  const [character, setCharacter] = useState([]);
-  const [azar, setAzar] = useState(0);
+  let random = Math.floor(Math.random() * 635);
+  const [personaje, setPersonaje] = useState({});
+  const [count, setCount] = useState(random);
+  useEffect(() => {
+    const fetchPersonaje = async () => {
+      const response = await fetch(
+        `https://apisimpsons.fly.dev/api/personajes?limit=1&page=${count}`
+      );
+      const data = await response.json();
+      console.log("Aca busco data", data.docs[0]);
+      setPersonaje(data.docs[0]);
+    };
+    fetchPersonaje();
+  }, [count]);
 
-  let numAzar = () => {
-    setAzar = Math.floor(Math.random() * (10 - 1) + 1);
+  const handlerRandom = () => {
+    const random = Math.floor(Math.random() * 635);
+    console.log("Aca busco random", random);
+    setCount(random);
   };
 
-  useEffect(() => {
-    numAzar();
-    const getCharacter = async () => {
-      const data = await fetch(
-        `https://apisimpsons.fly.dev/api/personajes?limit=1&page=${azar}`
-      );
-      const character = await data.json();
-      setCharacter(character.docs[0]);
-    };
-    getCharacter();
-  }, [azar]);
-
   return (
-    <>
-      <button onClick={numAzar}>RULETA</button>
-      <article className="card cardCharacter" key={character._id}>
-        <p className="numT">{character._id[0]}</p>
-        <h2 className="charList__nombre">{character.Nombre}</h2>
-        <img
-          className="charList__img"
-          src={character.Imagen}
-          alt={character.Nombre}
-        />
-        <h3 className="charList__ocupacion">{character.Ocupacion}</h3>
-        <p className="numB">{character._id[0]}</p>
-      </article>
-      <section>{character.Historia}</section>
-    </>
+    <div className="contenedor__presentacion">
+      <button className="btn-otro" onClick={handlerRandom}>
+      Personaje al azar
+      </button>
+      <Presentacion key={personaje._id} currentCharacter={personaje} />
+    </div>
   );
 };
 
