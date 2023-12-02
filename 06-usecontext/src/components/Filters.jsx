@@ -1,26 +1,36 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
+import { FilterContext } from "../context/ContextFilter";
 
-const Filters = ({setFilters}) => {
+const Filters = () => {
+  const { setFilters } = useContext(FilterContext);
+
+  //Sacar el valor de minPrice del contexto
   const [minPrice, setMinPrice] = useState();
-  const [category, setCategory] = useState();
 
-  const handleMinPrice = event => {
+  const handleMinPrice = (event) => {
     setMinPrice(event.target.value);
-    setFilters(prevState => ({...prevState , minPrice: event.target.value}))
-  }
+    setFilters((prevState) => ({ ...prevState, minPrice: event.target.value }));
+  };
 
-  const handleCategory = event => {
-    setFilters(prevState => ({...prevState , category: event.target.value}))
-  }
+  const handleCategory = (event) => {
+    setFilters((prevState) => ({ ...prevState, category: event.target.value }));
+  };
 
   return (
     <>
       <div>
         <label htmlFor="price">Precio</label>
-        <input type="range" id="price" name="price" min={0} max={50} value={minPrice}
-        onChange={handleMinPrice}
-        /><span>{minPrice}</span>
+        <input
+          type="range"
+          id="price"
+          name="price"
+          min={0}
+          max={50}
+          value={minPrice}
+          onChange={handleMinPrice}
+        />
+        <span>{minPrice}</span>
       </div>
       <div>
         <label htmlFor="category">Categoria</label>
