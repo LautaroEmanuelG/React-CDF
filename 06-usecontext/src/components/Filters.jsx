@@ -19,7 +19,7 @@ const Filters = () => {
 
   return (
     <>
-      <div>
+      <div className="price">
         <label htmlFor="price">Precio</label>
         <input
           type="range"
@@ -32,7 +32,7 @@ const Filters = () => {
         />
         <span>{minPrice}</span>
       </div>
-      <div>
+      <div className="category">
         <label htmlFor="category">Categoria</label>
         <select name="" id="category" onChange={handleCategory}>
           <option value="all">Todos</option>
