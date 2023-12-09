@@ -6,6 +6,7 @@ const Personaje = () => {
   let random = Math.floor(Math.random() * 635);
   const [personaje, setPersonaje] = useState({});
   const [count, setCount] = useState(random);
+  
   useEffect(() => {
     const fetchPersonaje = async () => {
       const response = await fetch(
@@ -20,7 +21,7 @@ const Personaje = () => {
 
   const handlerRandom = () => {
     const random = Math.floor(Math.random() * 635);
-    console.log("Aca busco random", random);
+    console.log("Buscando numero al azar: ", random);
     setCount(random);
   };
 
