@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import App from "../App";
 
 const SearchCharracters = () => {
   const [textoBusqueda, setTextoBusqueda] = useState("");
@@ -29,6 +30,11 @@ const SearchCharracters = () => {
       <button className="btn-enviar" onClick={handleEnviarBusqueda}>
         Enviar
       </button>
+      {/* <App key={resultadoBusqueda} currentCharacter={resultadoBusqueda} /> */}
+      {/* <div>
+        <h2>Resultado de la búsqueda:</h2>
+        <pre>{JSON.stringify(resultadoBusqueda, null, 2)}</pre>
+      </div> */}
     </div>
   );
 };
